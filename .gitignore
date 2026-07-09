@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+
+# Local experiment scratch (not the curated results/ committed to this repo)
+**/results/_tmp*/
+**/results_shift_multi/*/_tmp*/
+
+# MLflow local tracking artifacts (not used by this repo's stub; ignored in
+# case a local run creates them anyway)
+mlflow.db
+mlruns/
+
+# Stray checkpoint dir some algorithm files write to a cwd-relative default
+# path (see project/utils/mlflow_utils.py docstring) — never intended for
+# version control.
+**/artifacts_ifpoax/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

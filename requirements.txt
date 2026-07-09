@@ -1,0 +1,9 @@
+numpy>=1.26
+pandas>=2.3
+scipy>=1.16
+matplotlib>=3.10
+torch>=2.5          # CPU wheel is sufficient — only used for RNG-state save/load
+mlflow>=3.0
+mealpy>=3.0,<4.0
+optuna>=4.0
+opfunu>=1.0

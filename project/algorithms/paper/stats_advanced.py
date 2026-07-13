@@ -8,7 +8,7 @@ Melengkapi analyze.py dengan metodologi Derrac et al. (2011) lengkap:
   - Post-hoc terkontrol (kontrol = IFPOA-X) berbasis selisih peringkat rata-rata:
       * adjusted p-values Holm (step-down)   [Derrac 2011, Sec. 4.2]
       * adjusted p-values Finner
-  - Effect size berpasangan IFPOA-X vs tiap baseline:
+  - Effect size independent-sample IFPOA-X vs tiap baseline:
       * Vargha-Delaney A12 (prob. IFPOA-X lebih baik; minimisasi)
       * Cohen's d (rata-rata lintas fungsi)
   - Bootstrap 95% CI untuk peringkat rata-rata tiap algoritma

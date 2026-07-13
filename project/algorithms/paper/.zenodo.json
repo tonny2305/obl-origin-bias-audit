@@ -1,0 +1,22 @@
+{
+  "title": "IFPOA-X low-budget benchmark and origin-bias audit",
+  "description": "Code, raw benchmark results, analysis scripts, and reproducibility metadata for the IFPOA-X origin-bias audit.",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "MIT",
+  "version": "1.0.0",
+  "creators": [
+    {"name": "Aji, Tonny Wahyu"},
+    {"name": "Sinambela, Marzuki"},
+    {"name": "Nugroho, Hapsoro Agung"},
+    {"name": "Trihadi, Edward"}
+  ],
+  "keywords": ["opposition-based learning", "metaheuristic benchmarking", "origin bias", "flower pollination algorithm"],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/tonny2305/obl-origin-bias-audit",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}

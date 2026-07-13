@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated article."
+title: "IFPOA-X low-budget benchmark and origin-bias audit"
+type: software
+version: 1.0.0
+date-released: 2026-07-13
+authors:
+  - family-names: Aji
+    given-names: Tonny Wahyu
+    email: tonny.wahyuaji@gmail.com
+  - family-names: Sinambela
+    given-names: Marzuki
+    email: sinambela.m@gmail.com
+  - family-names: Nugroho
+    given-names: Hapsoro Agung
+    email: hapsoro.agung@stmkg.ac.id
+  - family-names: Trihadi
+    given-names: Edward
+    email: etrihadi@stmkg.ac.id
+repository-code: "https://github.com/tonny2305/obl-origin-bias-audit"
+license: MIT
+keywords:
+  - opposition-based learning
+  - metaheuristic benchmarking
+  - origin bias
+  - flower pollination algorithm

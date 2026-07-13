@@ -1,4 +1,4 @@
-# Advanced Statistical Analysis — Multi-shift MIXED (domain-safe F8, 13 functions) (D=30)
+# Advanced Statistical Analysis — mixed_full D=30 (D=30)
 
 Algorithms k = 8; functions N = 13; runs per cell = 15; per-function aggregate = median.
 

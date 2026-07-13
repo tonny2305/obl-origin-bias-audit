@@ -1,4 +1,4 @@
-# Advanced Statistical Analysis — Multi-shift FAR (0.60-0.90, unsigned) (D=30)
+# Advanced Statistical Analysis — far D=30 (D=30)
 
 Algorithms k = 8; functions N = 13; runs per cell = 15; per-function aggregate = median.
 

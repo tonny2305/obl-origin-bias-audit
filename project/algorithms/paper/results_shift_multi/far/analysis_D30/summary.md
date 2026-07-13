@@ -1,6 +1,6 @@
-# Ringkasan Statistik Nilai Fitness Akhir
+# Summary Statistics of Final Fitness
 
-| Fungsi | Algoritma | Terbaik | Terburuk | Rata-rata | Std | Median |
+| Function | Algorithm | Best | Worst | Mean | Std | Median |
 |---|---|---|---|---|---|---|
 | F1 | IFPOA-X | 2.608e+04 | 6.569e+04 | 4.474e+04 | 1.032e+04 | 4.572e+04 |
 | F1 | FPA | 8.913e+04 | 1.293e+05 | 1.111e+05 | 1.195e+04 | 1.098e+05 |

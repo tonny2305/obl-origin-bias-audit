@@ -1,4 +1,4 @@
-# Advanced Statistical Analysis — CEC2017 (shifted+rotated) (D=30)
+# Advanced Statistical Analysis — results_cec D=30 (D=30)
 
 Algorithms k = 8; functions N = 10; runs per cell = 20; per-function aggregate = median.
 

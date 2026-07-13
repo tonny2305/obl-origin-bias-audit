@@ -17,8 +17,8 @@ magnitude on the centred suite and ~0 once the optimum is displaced.
 
 This repository contains everything needed to reproduce that audit:
 benchmark suites, baseline adapters, the equal-NFE fairness harness, every
-analysis/figure script, and the raw results. It does **not** contain the
-manuscript itself.
+analysis/figure script, the raw results, and the final SWEVO manuscript
+submission package.
 
 ## Repository layout
 
@@ -37,12 +37,14 @@ project/
       ablation*.py                  # component ablation (OBL / JADE / bandit)
       rerun_f8_mixed.py             # domain-safe F8 re-run (see Known issues below)
       merge_f8_mixed.py             # merges the domain-safe fix into the dataset
-      analyze.py, stats_advanced.py # descriptive + Wilcoxon/Friedman/Iman-Davenport/
+      analyze.py, stats_advanced.py # descriptive + Mann-Whitney U/Friedman/Iman-Davenport/
                                       # Holm/Finner/Vargha-Delaney/bootstrap-CI stats
       extra_figures.py, synthesis_figure.py, interaction_figure.py  # figures
       verify_shift.py               # mathematical verification of the shift transform
       results*/                     # curated raw results for every suite/control
       README.md                     # detailed usage instructions and reproduction commands
+Paper/
+  SWEVO_submission_template/         # final LaTeX manuscript, figures, PDF, compile log
   hpo/, utils/                       # minimal compatibility stubs (see below)
 ```
 

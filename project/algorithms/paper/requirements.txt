@@ -1,0 +1,12 @@
+numpy==1.26.0
+pandas==2.3.3
+scipy==1.16.3
+matplotlib==3.10.8
+--extra-index-url https://download.pytorch.org/whl/cu121
+torch==2.5.1+cu121
+mlflow==3.8.1
+mealpy==3.0.3
+optuna==4.7.0
+opfunu==1.0.4
+seaborn==0.13.2
+tqdm==4.67.1

@@ -1,0 +1,14 @@
+results/_tmp/
+mlruns/
+mlflow.db
+project/
+__pycache__/
+*.log
+manuscript/*.aux
+manuscript/*.bbl
+manuscript/*.blg
+manuscript/*.out
+manuscript/*.pdf
+!manuscript/supplementary.pdf
+!manuscript/supplementary_compile.log
+manuscript/*.docx

@@ -1,4 +1,4 @@
-# Advanced Statistical Analysis — Classical F1-F13 (D=50)
+# Advanced Statistical Analysis — results D=50 (D=50)
 
 Algorithms k = 8; functions N = 13; runs per cell = 20; per-function aggregate = median.
 

@@ -1,6 +1,6 @@
 # Statistical Significance Tests
 
-## Wilcoxon signed-rank: IFPOA-X vs baseline (per function)
+## Mann--Whitney U: IFPOA-X vs baseline (per function)
 
 Win/loss summary for IFPOA-X (α=0.05): '+' significantly better, '−' worse, '=' not significant.
 

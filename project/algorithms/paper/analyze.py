@@ -5,11 +5,11 @@ Statistical analysis & visualization, PAPER 1 (per dimension).
 Input  : results/raw_D{dim}.csv, results/curves_D{dim}.npz (from run_benchmark.py)
 Output : results/analysis_D{dim}/
   - summary.md / summary.csv         : best/worst/mean/std/median per function x algorithm
-  - stats.md                         : Wilcoxon (per function), Friedman, mean rank
+  - stats.md                         : Mann--Whitney U (per function), Friedman, mean rank
   - convergence_grid.png/.pdf        : convergence curves, 13 functions (equal-NFE)
   - cd_diagram.png/.pdf              : Critical Difference diagram (Nemenyi, α=0.05)
 
-Tests: Wilcoxon signed-rank (IFPOA-X vs each baseline), Friedman, mean rank,
+Tests: Mann--Whitney U (IFPOA-X vs each baseline), Friedman, mean rank,
 Demšar (2006) methodology with Critical Difference (post-hoc Nemenyi).
 """
 import sys, argparse
@@ -66,8 +66,8 @@ def stats_analysis(df, algos, funcs, out):
     baselines = [a for a in algos if a != PROPOSED]
     L = ["# Statistical Significance Tests\n"]
 
-    # --- Wilcoxon per function: IFPOA-X vs each baseline (20 paired runs) ---
-    L.append("## Wilcoxon signed-rank: IFPOA-X vs baseline (per function)\n")
+    # --- Independent-samples Mann--Whitney U per function ---
+    L.append("## Mann--Whitney U: IFPOA-X vs baseline (per function)\n")
     L.append("Win/loss summary for IFPOA-X (α=0.05): '+' significantly better, '−' worse, '=' not significant.\n")
     header = "| Function | " + " | ".join(baselines) + " |"
     L.append(header); L.append("|" + "---|" * (len(baselines) + 1))
@@ -77,10 +77,7 @@ def stats_analysis(df, algos, funcs, out):
         d1 = df[(df.Function == f) & (df.Algorithm == PROPOSED)].sort_values("Run")["Best"].values
         for b in baselines:
             d2 = df[(df.Function == f) & (df.Algorithm == b)].sort_values("Run")["Best"].values
-            try:
-                _, p = stats.wilcoxon(d1, d2)
-            except Exception:
-                p = 1.0
+            _, p = stats.mannwhitneyu(d1, d2, alternative="two-sided")
             better = np.median(d1) < np.median(d2)
             if p < 0.05 and better:
                 cells.append("+"); win[b][0] += 1
@@ -214,11 +211,12 @@ def convergence_grid(npz_path, funcs, algos, out):
 def emit_markdown_tables(df, avg_rank, CD, fried, algos, funcs, dim, man_dir):
     """Write paste-ready Markdown tables + copy figures to the manuscript folder."""
     tdir = Path(man_dir) / "tables"; tdir.mkdir(parents=True, exist_ok=True)
+    runs = int(df.groupby(["Function", "Algorithm"]).size().median())
     med = df.groupby(["Function", "Algorithm"])["Best"].mean().unstack()[algos]
     # --- summary: mean per function x algorithm, best in bold ---
     head = "| Func | " + " | ".join(algos) + " |"
     sep = "|" + "---|" * (len(algos) + 1)
-    lines = [f"**Table: Mean final fitness (D={dim}, 500 NFE, 20 runs). Best in bold.**\n",
+    lines = [f"**Table: Mean final fitness (D={dim}, 500 NFE, {runs} runs). Best in bold.**\n",
              head, sep]
     for f in funcs:
         row = med.loc[f]
@@ -231,24 +229,21 @@ def emit_markdown_tables(df, avg_rank, CD, fried, algos, funcs, dim, man_dir):
     lines.append(f"\nFriedman: χ²={chi2:.3f}, p={p:.3e}; Nemenyi CD={CD:.3f} (α=0.05).")
     (tdir / f"summary_D{dim}.md").write_text("\n".join(lines), encoding="utf-8")
 
-    # --- wilcoxon win/loss/tie IFPOA-X vs baseline ---
+    # --- Mann--Whitney U win/loss/tie IFPOA-X vs baseline ---
     baselines = [a for a in algos if a != PROPOSED]
     rec = {b: [0, 0, 0] for b in baselines}
     for f in funcs:
         d1 = df[(df.Function == f) & (df.Algorithm == PROPOSED)].sort_values("Run")["Best"].values
         for b in baselines:
             d2 = df[(df.Function == f) & (df.Algorithm == b)].sort_values("Run")["Best"].values
-            try:
-                _, pw = stats.wilcoxon(d1, d2)
-            except Exception:
-                pw = 1.0
+            _, pw = stats.mannwhitneyu(d1, d2, alternative="two-sided")
             better = np.median(d1) < np.median(d2)
             rec[b][0 if (pw < 0.05 and better) else 1 if (pw < 0.05) else 2] += 1
-    wl = [f"**Table: IFPOA-X vs baseline - win/loss/tie (Wilcoxon, α=0.05), D={dim}.**\n",
+    wl = [f"**Table: IFPOA-X vs baseline - win/loss/tie (Mann--Whitney U, α=0.05), D={dim}.**\n",
           "| Baseline | Win | Loss | Tie |", "|---|---|---|---|"]
     for b in baselines:
         wl.append(f"| {b} | {rec[b][0]} | {rec[b][1]} | {rec[b][2]} |")
-    (tdir / f"wilcoxon_D{dim}.md").write_text("\n".join(wl), encoding="utf-8")
+    (tdir / f"mannwhitney_D{dim}.md").write_text("\n".join(wl), encoding="utf-8")
 
     # --- copy figures to manuscript/figures/ (PNG + vector PDF) ---
     fdir = Path(man_dir) / "figures"; fdir.mkdir(parents=True, exist_ok=True)

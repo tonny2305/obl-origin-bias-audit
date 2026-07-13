@@ -1,6 +1,6 @@
 # Statistical Significance Tests
 
-## Wilcoxon signed-rank: IFPOA-X vs baseline (per function)
+## Mann--Whitney U: IFPOA-X vs baseline (per function)
 
 Win/loss summary for IFPOA-X (α=0.05): '+' significantly better, '−' worse, '=' not significant.
 
@@ -11,7 +11,7 @@ Win/loss summary for IFPOA-X (α=0.05): '+' significantly better, '−' worse, '
 | F4 | + | − | = | − | − | + | = |
 | F5 | − | − | − | = | − | = | − |
 | F7 | − | − | − | − | − | + | − |
-| F9 | = | − | = | = | = | = | = |
+| F9 | = | − | = | + | = | − | = |
 | F10 | + | − | = | − | − | + | − |
 | F11 | + | − | = | − | − | + | − |
 | F14 | + | − | = | − | − | + | − |
@@ -21,9 +21,9 @@ Win/loss summary for IFPOA-X (α=0.05): '+' significantly better, '−' worse, '
 - vs FPA: 7/2/1
 - vs PSO: 0/9/1
 - vs DE: 2/2/6
-- vs L-SHADE: 0/8/2
+- vs L-SHADE: 1/8/1
 - vs GWO: 0/9/1
-- vs WOA: 8/0/2
+- vs WOA: 8/1/1
 - vs TPE: 0/5/5
 
 ## Mean Rank (Friedman) & Critical Difference
